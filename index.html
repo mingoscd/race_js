@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Basic javascript</title>
+	<style>
+		td{ width: 100px; height: 100px; border: 1px solid #ccc;}
+		.load-image-1 {background-image: url("mario.jpg");background-size: 100px 100px; background-repeat: no-repeat;}
+		.load-image-2 {background-image: url("sonic.jpg");background-size: 100px 100px; background-repeat: no-repeat;}
+	</style>
+</head>
+<body>
+	<p>Player 1: press A</p>
+	<p>Player 2: press L</p>
+	<table>
+		<tr>
+			<td class="load-image-1"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td class="final"></td>
+		</tr>
+		<tr>
+			<td class="load-image-2"></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td class="final"></td>
+		</tr>
+	</table>
+	<script>
+		window.addEventListener("keyup",function(e){
+			switch(e.keyCode){
+				case 65: race("1");
+						 break; 
+				case 76: race("2");
+						 break;			
+			}
+		});
+		function race(player){
+			position = document.getElementsByClassName("load-image-"+player)[0];
+			position.className = "";
+			if(position.nextSibling.className == "final"){
+				position.nextSibling.className = "final load-image-"+player;
+				alert("player "+player+" wins");
+			}else{
+				position.nextSibling.className = "final load-image-"+player;
+			}
+		}
+	</script>
+</body>
+</html>
